@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Mencuci Piring - Gendis Zulfa Rahmadhani</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Kanvas Utama menyerupai rasio poster/gambar */
+        .poster {
+            position: relative;
+            width: 100%;
+            max-width: 540px;
+            min-height: 920px;
+            background: #ffffff;
+            padding: 18px 20px 60px 20px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* --- Ornamen Geometris Latar Belakang --- */
+        .bg-shape {
+            position: absolute;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Kanan Atas */
+        .top-right-blob {
+            top: -15px;
+            right: -25px;
+            width: 105px;
+            height: 105px;
+            background: linear-gradient(135deg, #83a4f7, #9575de);
+            border-radius: 35% 65% 50% 50% / 45% 40% 60% 55%;
+        }
+        .top-right-circle {
+            top: 48px;
+            right: 45px;
+            width: 48px;
+            height: 48px;
+            background: #87ceeb;
+            border-radius: 50%;
+            opacity: 0.9;
+        }
+
+        /* Kiri Atas */
+        .top-left-poly {
+            top: 135px;
+            left: -45px;
+            width: 110px;
+            height: 120px;
+            background: linear-gradient(180deg, #b3e5fc, #7ec8e3);
+            clip-path: polygon(25% 0%, 100% 35%, 95% 85%, 20% 100%, 0% 45%);
+            opacity: 0.85;
+        }
+
+        /* Kanan Tengah */
+        .mid-right-diamond {
+            top: 190px;
+            right: -45px;
+            width: 90px;
+            height: 90px;
+            border: 7px solid #8cc7e8;
+            transform: rotate(45deg);
+        }
+
+        /* Kiri Bawah */
+        .bot-left-diamond-outer {
+            bottom: 310px;
+            left: -55px;
+            width: 105px;
+            height: 105px;
+            border: 6px solid #7ec8e3;
+            transform: rotate(45deg);
+        }
+        .bot-left-diamond-inner {
+            bottom: 325px;
+            left: -45px;
+            width: 75px;
+            height: 75px;
+            border: 5px solid #9d7ee0;
+            transform: rotate(45deg);
+        }
+        .bot-left-pentagon {
+            bottom: 145px;
+            left: -25px;
+            width: 95px;
+            height: 95px;
+            background: linear-gradient(135deg, #8ab6f9, #9b7ede);
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+        .bot-left-circle {
+            bottom: 170px;
+            left: 42px;
+            width: 62px;
+            height: 62px;
+            background: #87ceeb;
+            border-radius: 50%;
+            opacity: 0.92;
+        }
+
+        /* Kanan Bawah */
+        .bot-right-circle {
+            bottom: 295px;
+            right: -10px;
+            width: 55px;
+            height: 55px;
+            background: #92d0ea;
+            border-radius: 50%;
+        }
+        .bot-right-hex {
+            bottom: 225px;
+            right: -35px;
+            width: 105px;
+            height: 105px;
+            background: linear-gradient(160deg, #9c7ce0, #7688e8);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* --- Konten Utama --- */
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Identitas Pojok Kiri Atas */
+        .identity {
+            text-align: left;
+            color: #1a152e;
+            font-size: 23px;
+            font-weight: 700;
+            line-height: 1.28;
+            margin-bottom: 22px;
+        }
+
+        /* Judul Utama */
+        .title {
+            text-align: center;
+            font-size: 31px;
+            font-weight: 700;
+            color: #0d0d0d;
+            margin-bottom: 24px;
+            letter-spacing: -0.3px;
+        }
+
+        /* Susunan Flowchart */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Shadow lembut seperti pada gambar */
+        .shape-shadow {
+            filter: drop-shadow(0px 6px 8px rgba(0, 0, 0, 0.16));
+        }
+
+        /* 1. Terminator: Mulai */
+        .terminator-start {
+            width: 145px;
+            height: 52px;
+            background: #9575de;
+            border-radius: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        /* 2. Input (Jajar Genjang) */
+        .parallelogram-input {
+            position: relative;
+            width: 335px;
+            padding: 12px 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #0d0d0d;
+        }
+        .parallelogram-input::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #87ceeb 0%, #9b84e6 100%);
+            transform: skewX(-24deg);
+            z-index: -1;
+        }
+
+        /* 3. Proses (Persegi Panjang) */
+        .process-box {
+            width: 300px;
+            background: linear-gradient(180deg, #d7b4f3 0%, #c8a2e8 100%);
+            padding: 14px 20px;
+            text-align: center;
+            color: #0d0d0d;
+        }
+
+        /* 4. Output (Jajar Genjang) */
+        .parallelogram-output {
+            position: relative;
+            width: 325px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #0d0d0d;
+            font-size: 19px;
+        }
+        .parallelogram-output::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, #82c8e8 0%, #8cd0ed 100%);
+            transform: skewX(-20deg);
+            z-index: -1;
+        }
+
+        /* 5. Terminator: Selesai */
+        .terminator-end {
+            width: 130px;
+            height: 62px;
+            background: #9575de;
+            border-radius: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        /* Tipografi di dalam kotak */
+        .box-heading {
+            font-size: 19px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .box-list {
+            list-style: none;
+            font-size: 18.5px;
+            line-height: 1.28;
+            font-weight: 400;
+        }
+
+        /* Panah Penghubung */
+        .arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: -2px 0;
+            z-index: 2;
+        }
+
+        @media (max-width: 480px) {
+            .identity { font-size: 19px; }
+            .title { font-size: 25px; }
+            .parallelogram-input { width: 285px; padding: 10px 25px; }
+            .process-box { width: 265px; }
+            .parallelogram-output { width: 280px; }
+            .box-heading, .box-list, .parallelogram-output { font-size: 16.5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poster">
+        <!-- Dekorasi Background -->
+        <div class="bg-shape top-right-blob"></div>
+        <div class="bg-shape top-right-circle"></div>
+        <div class="bg-shape top-left-poly"></div>
+        <div class="bg-shape mid-right-diamond"></div>
+        <div class="bg-shape bot-left-diamond-outer"></div>
+        <div class="bg-shape bot-left-diamond-inner"></div>
+        <div class="bg-shape bot-left-pentagon"></div>
+        <div class="bg-shape bot-left-circle"></div>
+        <div class="bg-shape bot-right-circle"></div>
+        <div class="bg-shape bot-right-hex"></div>
+
+        <!-- Isi Poster -->
+        <div class="content">
+            <div class="identity">
+                <div>Nama: Gendis Zulfa Rahmadhani[span_2](start_span)[span_2](end_span)</div>
+                <div>Kelas: X-3[span_3](start_span)[span_3](end_span)</div>
+            </div>
+
+            <h1 class="title">Cara Mencuci Piring[span_4](start_span)[span_4](end_span)</h1>
+
+            <div class="flowchart">
+                <!-- Mulai -->
+                <div class="shape-shadow">
+                    <div class="terminator-start">Mulai[span_5](start_span)[span_5](end_span)</div>
+                </div>
+
+                <!-- Panah 1 -->
+                <div class="arrow">
+                    <svg width="28" height="40" viewBox="0 0 28 40">
+                        <line x1="14" y1="0" x2="14" y2="26" stroke="#221c42" stroke-width="4.5"/>
+                        <polygon points="4,24 24,24 14,39" fill="#221c42"/>
+                    </svg>
+                </div>
+
+                <!-- Input -->
+                <div class="shape-shadow">
+                    <div class="parallelogram-input">
+                        <div class="box-heading">Input[span_6](start_span)[span_6](end_span)</div>
+                        <ul class="box-list">
+                            <li>- Siapkan Sabun[span_7](start_span)[span_7](end_span)</li>
+                            <li>- Siapkan Sponge[span_8](start_span)[span_8](end_span)</li>
+                            <li>- Siapkan Air Bersih[span_9](start_span)[span_9](end_span)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Panah 2 -->
+                <div class="arrow">
+                    <svg width="28" height="40" viewBox="0 0 28 40">
+                        <line x1="14" y1="0" x2="14" y2="26" stroke="#221c42" stroke-width="4.5"/>
+                        <polygon points="4,24 24,24 14,39" fill="#221c42"/>
+                    </svg>
+                </div>
+
+                <!-- Proses -->
+                <div class="shape-shadow">
+                    <div class="process-box">
+                        <ul class="box-list">
+                            <li>- Ambil Piring[span_10](start_span)[span_10](end_span)</li>
+                            <li>- Bersihkan Dengan Sabun[span_11](start_span)[span_11](end_span)</li>
+                            <li>- Bilas[span_12](start_span)[span_12](end_span)</li>
+                            <li>- Angkat Piring[span_13](start_span)[span_13](end_span)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Panah 3 -->
+                <div class="arrow">
+                    <svg width="28" height="42" viewBox="0 0 28 42">
+                        <line x1="14" y1="0" x2="14" y2="28" stroke="#221c42" stroke-width="4.5"/>
+                        <polygon points="4,26 24,26 14,41" fill="#221c42"/>
+                    </svg>
+                </div>
+
+                <!-- Output -->
+                <div class="shape-shadow">
+                    <div class="parallelogram-output">
+                        Output / Piring Bersih[span_14](start_span)[span_14](end_span)
+                    </div>
+                </div>
+
+                <!-- Panah 4 (Lebih panjang sesuai gambar) -->
+                <div class="arrow">
+                    <svg width="28" height="62" viewBox="0 0 28 62">
+                        <line x1="14" y1="0" x2="14" y2="47" stroke="#221c42" stroke-width="4.5"/>
+                        <polygon points="4,45 24,45 14,61" fill="#221c42"/>
+                    </svg>
+                </div>
+
+                <!-- Selesai -->
+                <div class="shape-shadow">
+                    <div class="terminator-end">Selesai[span_15](start_span)[span_15](end_span)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
